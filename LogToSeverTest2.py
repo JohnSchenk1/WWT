@@ -2,7 +2,7 @@ import time
 import board
 import digitalio
 import hx711_gpio
-import GETLogger
+from GETLogger import *
 
 # set up data structure
 data = {}
@@ -26,7 +26,7 @@ mass = hx.read()/scale
 
 
 
-logger = GETLogger("TFS Student", "Fultoneagles", "http://popu.local/logger/logger.php")
+logger = GETLogger("TFS Students", "Fultoneagles", "http://popu.local/logger/logger.php")
 
 
 while True:
