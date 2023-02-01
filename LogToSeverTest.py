@@ -7,10 +7,10 @@ dt = 5 # seconds
 
 # set up data structure
 data = {}
-data["picoID"] = "chickens"
-data["sensor"] = "T"
+data["picoID"] = ""
+data["sensor"] = "Mass"
 data["reading"] = ""
-data["units"] = "C"
+data["units"] = "Kg"
 
 # set up thermometer and test
 thermo = uDS18X20(board.GP5, units=data["units"])

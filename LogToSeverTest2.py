@@ -3,6 +3,13 @@ import board
 import digitalio
 import hx711_gpio
 
+# set up data structure
+data = {}
+data["picoID"] = ""
+data["sensor"] = "Mass"
+data["reading"] = ""
+data["units"] = "Kg"
+
 # setup pins
 pin_OUT = digitalio.DigitalInOut(board.GP5)
 pin_SCK = digitalio.DigitalInOut(board.GP6)
@@ -14,11 +21,7 @@ hx.set_gain(128)
 time.sleep(0.050)
 scale = 25000.0
 
-# get mass
-while True:
-    mass = hx.read()/scale
-    print(f"Mass reading = {mass}")
-    time.sleep(0.5)
-############################
-# tare (sets reads base data and resets the OFFSET)
-#hx.tare()
+mass = hx.read()/scale
+
+data["reading"] = mass
+logger.log(data)
