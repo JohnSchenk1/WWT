@@ -2,10 +2,11 @@ import time
 import board
 import digitalio
 import hx711_gpio
+import GETLogger
 
 # set up data structure
 data = {}
-data["picoID"] = ""
+data["picoID"] = "Scale1"
 data["sensor"] = "Mass"
 data["reading"] = ""
 data["units"] = "Kg"
@@ -23,5 +24,15 @@ scale = 25000.0
 
 mass = hx.read()/scale
 
-data["reading"] = mass
-logger.log(data)
+
+
+logger = GETLogger("TFS Student", "Fultoneagles", "http://popu.local/logger/logger.php")
+
+
+while True:
+    try:
+        data["reading"] = mass
+        logger.log(data)
+        time.sleep(5)
+    except Exception as e:
+        print("Error:\n", str(e))
