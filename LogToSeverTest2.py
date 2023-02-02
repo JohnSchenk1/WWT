@@ -25,6 +25,8 @@ scale = 25000.0
 mass = hx.read()/scale
 
 
+x = 3.58636 + mass
+y = (x-.26854061)/0.01628224
 
 logger = GETLogger("TFS Students", "Fultoneagles", "http://popu.local/logger/logger.php")
 
