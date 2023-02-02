@@ -22,11 +22,6 @@ hx.set_gain(128)
 time.sleep(0.050)
 scale = 25000.0
 
-#scale equation
-mass = hx.read()/scale
-x = 3.58636 + mass
-y = (x-.26854061)/0.01628224
-
 
 
 logger = GETLogger("TFS Students", "Fultoneagles", "http://popu.local/logger/logger.php")
@@ -34,7 +29,12 @@ logger = GETLogger("TFS Students", "Fultoneagles", "http://popu.local/logger/log
 
 while True:
     try:
-        data["reading"] = mass
+        #scale equation
+        mass = hx.read()/scale
+        x = 3.58636 + mass
+        real_mass = (x-.26854061)/0.01628224
+#EACH SCALE HAST TO BE CALIBRATED I.E A 20Kg SCALE WILL HAVE A DIFFERENT EQUATION TO A 5Kg SCALE.
+        data["reading"] = real_mass
         logger.log(data)
         time.sleep(5)
     except Exception as e:
