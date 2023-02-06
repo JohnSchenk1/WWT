@@ -3,6 +3,8 @@ import board
 import digitalio
 from hx711_gpio import *
 from GETLogger import *
+#this is the "LOGTOSEVER" code
+
 
 # set up data structure
 data = {}
@@ -15,6 +17,8 @@ data["units"] = "g"
 pin_OUT = digitalio.DigitalInOut(board.GP5)
 pin_SCK = digitalio.DigitalInOut(board.GP6)
 pin_SCK.direction = digitalio.Direction.OUTPUT
+
+
 
 hx = HX711(pin_SCK, pin_OUT)
 hx.OFFSET = 0 # -150000
@@ -35,7 +39,9 @@ while True:
         real_mass = (x-.26854061)/0.01628224
 #EACH SCALE HAST TO BE CALIBRATED I.E A 20Kg SCALE WILL HAVE A DIFFERENT EQUATION TO A 5Kg SCALE.
         data["reading"] = real_mass
-        logger.log(data)
+        if old_mass != real_mass:
+            logger.log(data)
+        old_mass = real_mass
         time.sleep(5)
     except Exception as e:
         print("Error:\n", str(e))
