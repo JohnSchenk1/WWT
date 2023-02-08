@@ -4,7 +4,7 @@
     echo"and you are too coen!!!";
 
     print_r($_GET);
-    echo $_GET["name"];
+    echo "Hello" . $_GET["name"];
     $f = fopen("test.json", "a");
     fwrite($f, "This is a file.");
     fclose($f);
