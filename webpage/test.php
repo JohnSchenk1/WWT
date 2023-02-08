@@ -4,7 +4,7 @@
     echo"and you are too coen!!!<br>";
 
     print_r($_GET);
-    echo "Hello " . $_GET["name"];
+    echo "Hello " . $_GET["name"] . "<p>";
 
     foreach ($_GET as $id => $val){
         echo $id  . "==>" . $val . "<br>";
